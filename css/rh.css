@@ -1,0 +1,206 @@
+/* ==========================================================
+   MODULE RH
+   PORTAIL EAP SDIS37
+========================================================== */
+
+.rh-container{
+
+    width:95%;
+
+    max-width:1700px;
+
+    margin:30px auto;
+
+}
+
+.rh-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.rh-header h2{
+
+    color:#c1121f;
+
+    font-size:28px;
+
+}
+
+.rh-actions{
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:center;
+
+}
+
+.rh-actions input{
+
+    width:320px;
+
+    padding:12px 18px;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+}
+
+.rh-actions button{
+
+    background:#c1121f;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.rh-actions button:hover{
+
+    background:#970d18;
+
+}
+
+.btn-retour{
+
+    background:#c1121f;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 18px;
+
+    border-radius:10px;
+
+    font-weight:bold;
+
+}
+
+.btn-retour:hover{
+
+    background:#970d18;
+
+}
+
+/*==========================
+TABLEAU
+==========================*/
+
+#tableRH{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 22px rgba(0,0,0,.08);
+
+}
+
+#tableRH thead{
+
+    background:#23272f;
+
+    color:white;
+
+}
+
+#tableRH th{
+
+    padding:14px;
+
+    font-size:13px;
+
+    text-transform:uppercase;
+
+}
+
+#tableRH td{
+
+    padding:12px;
+
+    border-bottom:1px solid #ececec;
+
+    font-size:14px;
+
+}
+
+#tableRH tbody tr:hover{
+
+    background:#f8f8f8;
+
+}
+
+/*==========================
+BOUTONS ACTION
+==========================*/
+
+.action{
+
+    width:32px;
+
+    height:32px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    color:white;
+
+    margin-right:5px;
+
+}
+
+.action.edit{
+
+    background:#2563eb;
+
+}
+
+.action.view{
+
+    background:#16a34a;
+
+}
+
+.action.delete{
+
+    background:#dc2626;
+
+}
+
+.action:hover{
+
+    opacity:.85;
+
+}

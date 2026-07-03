@@ -1,0 +1,370 @@
+/* ==========================================================
+   PORTAIL EAP SDIS37
+   Version 0.4
+   Auteur : ChatGPT + Michaël DELALANDE
+========================================================== */
+
+:root{
+
+    --rouge:#c1121f;
+    --rouge-hover:#9f0f19;
+
+    --fond:#f4f6f9;
+
+    --blanc:#ffffff;
+
+    --gris:#6b7280;
+
+    --gris-clair:#eef2f7;
+
+    --vert:#22c55e;
+
+    --orange:#f59e0b;
+
+    --bleu:#2563eb;
+
+    --ombre:0 8px 24px rgba(0,0,0,.08);
+
+    --arrondi:18px;
+
+}
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:"Segoe UI",sans-serif;
+
+}
+
+body{
+
+    background:var(--fond);
+
+    color:#222;
+
+}
+
+.container{
+
+    width:95%;
+
+    max-width:1700px;
+
+    margin:auto;
+
+    padding:25px;
+
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.topbar{
+
+    background:white;
+
+    border-radius:20px;
+
+    box-shadow:var(--ombre);
+
+    padding:18px 30px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.logo i{
+
+    font-size:42px;
+
+    color:var(--rouge);
+
+}
+
+.logo h1{
+
+    font-size:28px;
+
+}
+
+.logo span{
+
+    color:var(--gris);
+
+    font-size:15px;
+
+}
+
+/* ==========================
+   ACTIONS
+========================== */
+
+.actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.search{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:var(--gris-clair);
+
+    padding:12px 18px;
+
+    border-radius:40px;
+
+}
+
+.search input{
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    width:280px;
+
+    font-size:15px;
+
+}
+
+.notification{
+
+    border:none;
+
+    cursor:pointer;
+
+    background:var(--rouge);
+
+    color:white;
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    position:relative;
+
+    transition:.25s;
+
+}
+
+.notification:hover{
+
+    background:var(--rouge-hover);
+
+}
+
+.notification span{
+
+    position:absolute;
+
+    top:-5px;
+
+    right:-5px;
+
+    width:22px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    background:orange;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:11px;
+
+}
+
+.profil{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.profil i{
+
+    font-size:42px;
+
+    color:var(--rouge);
+
+}
+
+.profil small{
+
+    color:var(--gris);
+
+}/*======================================================
+TABLEAU DE BORD
+======================================================*/
+
+.dashboard{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+    margin-top:35px;
+
+    margin-bottom:40px;
+
+}
+
+.bloc{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.25s;
+
+    cursor:pointer;
+
+    text-align:center;
+
+}
+
+.bloc:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.12);
+
+}
+
+.bloc i{
+
+    font-size:42px;
+
+    color:var(--rouge);
+
+    margin-bottom:18px;
+
+}
+
+.bloc h2{
+
+    font-size:24px;
+
+    margin-bottom:10px;
+
+}
+
+.bloc p{
+
+    color:#777;
+
+}.bloc{
+
+    text-decoration:none;
+
+    color:#222;
+
+}
+
+/*======================================================
+ALERTES
+======================================================*/
+
+.alertes{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.alertes h2{
+
+    color:var(--rouge);
+
+    margin-bottom:20px;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+th{
+
+    background:#f5f5f5;
+
+    text-align:left;
+
+    padding:14px;
+
+}
+
+td{
+
+    padding:14px;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+tbody tr:hover{
+
+    background:#fafafa;
+
+}
