@@ -18,39 +18,44 @@
 
   /* ===== HEADER ===== */
   header {
-    background: linear-gradient(135deg, #8B0000 0%, #C0392B 50%, #A0141E 100%);
+    background: linear-gradient(135deg, #8B0000 0%, #B22222 50%, #A0141E 100%);
     color: #fff;
-    padding: 50px 20px 60px;
+    padding: 35px 20px 30px;
     text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   }
 
-  header .logo {
-    font-size: 42px;
-    margin-bottom: 10px;
+  .logo-circle {
+    width: 90px;
+    height: 90px;
+    background: #fff;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-size: 40px;
   }
 
   header h1 {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
   }
 
   header p {
-    margin-top: 10px;
-    font-size: 16px;
+    font-size: 14px;
     opacity: 0.9;
+    margin-top: 6px;
   }
 
-  /* ===== MAIN ===== */
+  /* ===== MAIN GRID ===== */
   main {
     flex: 1;
     max-width: 1100px;
-    margin: -30px auto 40px;
-    padding: 0 20px;
-    width: 100%;
-  }
-
-  .grid {
+    margin: 0 auto;
+    padding: 40px 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
@@ -58,57 +63,97 @@
 
   .card {
     background: #fff;
-    border-radius: 16px;
-    padding: 28px 24px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    text-align: center;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
   }
 
-  .card .icon {
-    font-size: 36px;
+  .card-header {
+    padding: 20px 20px 14px;
+    color: #fff;
+  }
+
+  .card-header .icon {
+    font-size: 30px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .card-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .card-body {
+    padding: 16px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-body p {
+    font-size: 13.5px;
+    color: #555;
+    line-height: 1.5;
     margin-bottom: 14px;
   }
 
-  .card h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #A0141E;
-  }
-
-  .card p {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 18px;
-  }
-
-  .card a {
+  .badge {
     display: inline-block;
-    background: #A0141E;
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
-    transition: background 0.2s ease;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    width: fit-content;
   }
 
-  .card a:hover {
-    background: #8B0000;
+  .btn {
+    margin-top: auto;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    transition: opacity 0.2s ease;
   }
+
+  .btn:hover { opacity: 0.85; }
+
+  /* Couleurs thématiques par carte */
+  .c-rh .card-header, .c-rh .btn { background: #2c7be5; }
+  .c-rh .badge { background: #e7f0fd; color: #2c7be5; }
+
+  .c-suivi .card-header, .c-suivi .btn { background: #e67e22; }
+  .c-suivi .badge { background: #fdf1e6; color: #e67e22; }
+
+  .c-formation .card-header, .c-formation .btn { background: #27ae60; }
+  .c-formation .badge { background: #e8f8ee; color: #27ae60; }
+
+  .c-materiel .card-header, .c-materiel .btn { background: #8e44ad; }
+  .c-materiel .badge { background: #f3e9f7; color: #8e44ad; }
+
+  .c-stats .card-header, .c-stats .btn { background: #16a085; }
+  .c-stats .badge { background: #e5f7f4; color: #16a085; }
+
+  .c-docs .card-header, .c-docs .btn { background: #c0392b; }
+  .c-docs .badge { background: #fbe9e7; color: #c0392b; }
 
   /* ===== FOOTER ===== */
   footer {
     text-align: center;
-    padding: 20px;
-    font-size: 13px;
+    padding: 18px;
+    font-size: 12.5px;
     color: #888;
     background: #fff;
     border-top: 1px solid #eee;
@@ -118,57 +163,85 @@
 <body>
 
 <header>
-  <div class="logo">🚒</div>
+  <div class="logo-circle">🚒</div>
   <h1>Portail EAP - SDIS 37</h1>
   <p>Espace dédié aux Éducateurs des Activités Physiques</p>
 </header>
 
 <main>
-  <div class="grid">
 
-    <div class="card">
-      <div class="icon">👥</div>
-      <h2>RH</h2>
+  <div class="card c-rh">
+    <div class="card-header">
+      <span class="icon">👥</span>
+      <h2>Gestion RH</h2>
+    </div>
+    <div class="card-body">
       <p>Gestion et suivi des ressources humaines liées aux EAP.</p>
-      <a href="#">Accéder ➔</a>
+      <span class="badge">Agents & profils</span>
+      <a href="#" class="btn">Accéder →</a>
     </div>
-
-    <div class="card">
-      <div class="icon">📈</div>
-      <h2>Suivi annuel</h2>
-      <p>Consultation et mise à jour du suivi annuel des agents.</p>
-      <a href="#">Accéder ➔</a>
-    </div>
-
-    <div class="card">
-      <div class="icon">🎓</div>
-      <h2>Formation</h2>
-      <p>Accès aux ressources et plannings de formation.</p>
-      <a href="#">Accéder ➔</a>
-    </div>
-
-    <div class="card">
-      <div class="icon">🏋️</div>
-      <h2>Matériel</h2>
-      <p>Gestion et inventaire du matériel sportif.</p>
-      <a href="#">Accéder ➔</a>
-    </div>
-
-    <div class="card">
-      <div class="icon">📊</div>
-      <h2>Statistiques</h2>
-      <p>Indicateurs et bilans des activités physiques.</p>
-      <a href="#">Accéder ➔</a>
-    </div>
-
-    <div class="card">
-      <div class="icon">📁</div>
-      <h2>Documents</h2>
-      <p>Fiches, protocoles et documents utiles aux EAP.</p>
-      <a href="#">Accéder ➔</a>
-    </div>
-
   </div>
+
+  <div class="card c-suivi">
+    <div class="card-header">
+      <span class="icon">📋</span>
+      <h2>Suivi annuel</h2>
+    </div>
+    <div class="card-body">
+      <p>Consultation et mise à jour du suivi annuel des agents.</p>
+      <span class="badge">Bilan annuel</span>
+      <a href="#" class="btn">Accéder →</a>
+    </div>
+  </div>
+
+  <div class="card c-formation">
+    <div class="card-header">
+      <span class="icon">🎓</span>
+      <h2>Formation</h2>
+    </div>
+    <div class="card-body">
+      <p>Accès aux ressources et plannings de formation.</p>
+      <span class="badge">Planning & modules</span>
+      <a href="#" class="btn">Accéder →</a>
+    </div>
+  </div>
+
+  <div class="card c-materiel">
+    <div class="card-header">
+      <span class="icon">🏋️</span>
+      <h2>Matériel</h2>
+    </div>
+    <div class="card-body">
+      <p>Gestion et inventaire du matériel sportif.</p>
+      <span class="badge">Inventaire</span>
+      <a href="#" class="btn">Accéder →</a>
+    </div>
+  </div>
+
+  <div class="card c-stats">
+    <div class="card-header">
+      <span class="icon">📊</span>
+      <h2>Statistiques</h2>
+    </div>
+    <div class="card-body">
+      <p>Indicateurs et bilans des activités physiques.</p>
+      <span class="badge">Tableau de bord</span>
+      <a href="#" class="btn">Accéder →</a>
+    </div>
+  </div>
+
+  <div class="card c-docs">
+    <div class="card-header">
+      <span class="icon">📁</span>
+      <h2>Documents</h2>
+    </div>
+    <div class="card-body">
+      <p>Fiches, protocoles et documents utiles aux EAP.</p>
+      <span class="badge">Ressources</span>
+      <a href="#" class="btn">Accéder →</a>
+    </div>
+  </div>
+
 </main>
 
 <footer>
