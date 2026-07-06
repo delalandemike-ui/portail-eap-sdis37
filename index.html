@@ -7,6 +7,8 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html { font-size: 18px; } /* base agrandie pour tout le site */
+
   body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: #f2f4f7;
@@ -14,235 +16,242 @@
     min-height: 100vh;
   }
 
-  /* ===== HEADER / RUBAN ===== */
+  /* ===== HEADER / BANDEAU - dégradé moderne façon ta référence ===== */
   header {
-    background: linear-gradient(135deg, #8B0000 0%, #B22222 50%, #A0141E 100%);
+    background: linear-gradient(135deg,
+      #fdf6e3 0%,
+      #f9a825 20%,
+      #d32f2f 45%,
+      #6a1b6a 70%,
+      #1a1a4d 100%);
     color: #fff;
-    padding: 25px 20px 22px;
+    padding: 34px 20px 30px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
   }
 
   .logo-circle {
-    width: 72px;
-    height: 72px;
+    width: 92px;
+    height: 92px;
     background: #fff;
     border-radius: 50%;
-    margin: 0 auto 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
 
   .logo-circle img {
-    width: 100%;
-    height: 100%;
+    width: 78%;
+    height: 78%;
     object-fit: contain;
   }
 
   header h1 {
-    font-size: 22px;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 0.5px;
   }
 
   header p {
-    font-size: 13px;
-    opacity: 0.9;
+    font-size: 1.05rem;
+    opacity: 0.95;
     margin-top: 4px;
   }
 
-  /* ===== GRILLE DE CARTES ===== */
-  .container {
-    max-width: 1100px;
+  /* ===== CONTENU ===== */
+  main {
+    max-width: 1150px;
     margin: 0 auto;
-    padding: 25px 15px 40px;
+    padding: 36px 24px;
   }
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 26px;
   }
 
   .card {
     background: #fff;
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
 
   .card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
   }
 
   .card-header {
-    padding: 14px 16px;
+    padding: 22px 20px 18px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
     color: #fff;
   }
 
   .card-header .icon {
-    font-size: 22px;
+    font-size: 2.1rem;
+    width: 52px;
+    height: 52px;
     background: rgba(255,255,255,0.25);
-    width: 38px;
-    height: 38px;
-    border-radius: 8px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
   .card-header h3 {
-    font-size: 15px;
+    font-size: 1.15rem;
     font-weight: 600;
   }
 
-  /* Dégradés distincts par carte */
-  .grad-rh       { background: linear-gradient(135deg, #4facfe 0%, #00c6ff 100%); }
-  .grad-suivi    { background: linear-gradient(135deg, #f7971e 0%, #ffb347 100%); }
-  .grad-form     { background: linear-gradient(135deg, #43e97b 0%, #2fb56d 100%); }
-  .grad-materiel { background: linear-gradient(135deg, #7f53ac 0%, #647dee 100%); }
-  .grad-stats    { background: linear-gradient(135deg, #ff5e62 0%, #ff9966 100%); }
-  .grad-doc      { background: linear-gradient(135deg, #667eea 0%, #5a4fcf 100%); }
-
   .card-body {
-    padding: 12px 16px 14px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 18px 20px 22px;
   }
 
   .card-body p {
-    font-size: 13px;
+    font-size: 0.95rem;
     color: #666;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
     line-height: 1.4;
   }
 
-  .card-btn {
-    align-self: flex-start;
-    padding: 7px 14px;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
+  .card-body .btn {
     display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 11px 0;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: filter 0.2s ease;
   }
 
-  .btn-rh       { background: linear-gradient(135deg, #4facfe, #00c6ff); }
-  .btn-suivi    { background: linear-gradient(135deg, #f7971e, #ffb347); }
-  .btn-form     { background: linear-gradient(135deg, #43e97b, #2fb56d); }
-  .btn-materiel { background: linear-gradient(135deg, #7f53ac, #647dee); }
-  .btn-stats    { background: linear-gradient(135deg, #ff5e62, #ff9966); }
-  .btn-doc      { background: linear-gradient(135deg, #667eea, #5a4fcf); }
+  .card-body .btn:hover {
+    filter: brightness(1.08);
+  }
 
-  /* ===== FOOTER ===== */
+  /* Dégradés par carte, cohérents avec le style GRIMP */
+  .card.rh .card-header { background: linear-gradient(135deg, #1e88e5, #1565c0); }
+  .card.rh .btn { background: linear-gradient(135deg, #1e88e5, #1565c0); }
+
+  .card.suivi .card-header { background: linear-gradient(135deg, #fb8c00, #ef6c00); }
+  .card.suivi .btn { background: linear-gradient(135deg, #fb8c00, #ef6c00); }
+
+  .card.formation .card-header { background: linear-gradient(135deg, #43a047, #2e7d32); }
+  .card.formation .btn { background: linear-gradient(135deg, #43a047, #2e7d32); }
+
+  .card.materiel .card-header { background: linear-gradient(135deg, #8e24aa, #6a1b9a); }
+  .card.materiel .btn { background: linear-gradient(135deg, #8e24aa, #6a1b9a); }
+
+  .card.stats .card-header { background: linear-gradient(135deg, #e53935, #b71c1c); }
+  .card.stats .btn { background: linear-gradient(135deg, #e53935, #b71c1c); }
+
+  .card.docs .card-header { background: linear-gradient(135deg, #fdd835, #f9a825); }
+  .card.docs .btn { background: linear-gradient(135deg, #fdd835, #f9a825); color: #333; }
+
   footer {
     text-align: center;
-    padding: 15px;
-    font-size: 12px;
-    color: #999;
+    padding: 22px;
+    color: #888;
+    font-size: 0.9rem;
   }
 </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo-circle">
-      <img src="assets/logo.png" alt="Logo SDIS 37">
-    </div>
-    <h1>Portail EAP</h1>
-    <p>SDIS 37</p>
-  </header>
-
-  <div class="container">
-    <div class="grid">
-
-      <div class="card">
-        <div class="card-header grad-rh">
-          <div class="icon">👤</div>
-          <h3>RH</h3>
-        </div>
-        <div class="card-body">
-          <p>Gestion des dossiers personnels et administratifs des agents.</p>
-          <a href="#" class="card-btn btn-rh">Accéder</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header grad-suivi">
-          <div class="icon">📊</div>
-          <h3>Suivi annuel</h3>
-        </div>
-        <div class="card-body">
-          <p>Suivi des évaluations et objectifs annuels des agents.</p>
-          <a href="#" class="card-btn btn-suivi">Accéder</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header grad-form">
-          <div class="icon">🎓</div>
-          <h3>Formation</h3>
-        </div>
-        <div class="card-body">
-          <p>Suivi des formations suivies et à planifier.</p>
-          <a href="#" class="card-btn btn-form">Accéder</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header grad-materiel">
-          <div class="icon">🧰</div>
-          <h3>Matériel</h3>
-        </div>
-        <div class="card-body">
-          <p>Suivi et gestion du matériel attribué.</p>
-          <a href="#" class="card-btn btn-materiel">Accéder</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header grad-stats">
-          <div class="icon">📈</div>
-          <h3>Statistiques</h3>
-        </div>
-        <div class="card-body">
-          <p>Indicateurs et statistiques globales du service.</p>
-          <a href="#" class="card-btn btn-stats">Accéder</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header grad-doc">
-          <div class="icon">📁</div>
-          <h3>Documents</h3>
-        </div>
-        <div class="card-body">
-          <p>Accès aux documents et procédures officielles.</p>
-          <a href="#" class="card-btn btn-doc">Accéder</a>
-        </div>
-      </div>
-
-    </div>
+<header>
+  <div class="logo-circle">
+    <img src="assets/logo.png" alt="Logo EAP SDIS 37">
   </div>
+  <h1>Portail EAP</h1>
+  <p>SDIS 37</p>
+</header>
 
-  <footer>
-    © 2026 SDIS 37 - Portail EAP
-  </footer>
+<main>
+  <div class="grid">
+
+    <div class="card rh">
+      <div class="card-header">
+        <div class="icon">👥</div>
+        <h3>RH</h3>
+      </div>
+      <div class="card-body">
+        <p>Gestion des ressources humaines et suivi du personnel.</p>
+        <a href="#" class="btn">Accéder</a>
+      </div>
+    </div>
+
+    <div class="card suivi">
+      <div class="card-header">
+        <div class="icon">📅</div>
+        <h3>Suivi annuel</h3>
+      </div>
+      <div class="card-body">
+        <p>Suivi des évaluations et objectifs annuels.</p>
+        <a href="#" class="btn">Accéder</a>
+      </div>
+    </div>
+
+    <div class="card formation">
+      <div class="card-header">
+        <div class="icon">🎓</div>
+        <h3>Formation</h3>
+      </div>
+      <div class="card-body">
+        <p>Programmes de formation et certifications.</p>
+        <a href="#" class="btn">Accéder</a>
+      </div>
+    </div>
+
+    <div class="card materiel">
+      <div class="card-header">
+        <div class="icon">🧰</div>
+        <h3>Matériel</h3>
+      </div>
+      <div class="card-body">
+        <p>Gestion et suivi du matériel opérationnel.</p>
+        <a href="#" class="btn">Accéder</a>
+      </div>
+    </div>
+
+    <div class="card stats">
+      <div class="card-header">
+        <div class="icon">📊</div>
+        <h3>Statistiques</h3>
+      </div>
+      <div class="card-body">
+        <p>Tableaux de bord et indicateurs clés.</p>
+        <a href="#" class="btn">Accéder</a>
+      </div>
+    </div>
+
+    <div class="card docs">
+      <div class="card-header">
+        <div class="icon">📄</div>
+        <h3>Documents</h3>
+      </div>
+      <div class="card-body">
+        <p>Documents officiels et ressources partagées.</p>
+        <a href="#" class="btn">Accéder</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  © 2026 Portail EAP - SDIS 37. Tous droits réservés.
+</footer>
 
 </body>
 </html>
