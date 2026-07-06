@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portail EAP - SDIS37</title>
+<title>Portail EAP - SDIS 37</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -11,79 +11,46 @@
     font-family: 'Segoe UI', Arial, sans-serif;
     background: #f2f4f7;
     color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   /* ===== HEADER ===== */
   header {
-    background: linear-gradient(135deg, #8B0000 0%, #B22222 50%, #A0141E 100%);
+    background: linear-gradient(135deg, #8B0000 0%, #C0392B 50%, #A0141E 100%);
     color: #fff;
-    padding: 30px 20px;
+    padding: 50px 20px 60px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
 
-  .emblem {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 12px;
-    font-size: 32px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  header .logo {
+    font-size: 42px;
+    margin-bottom: 10px;
   }
 
   header h1 {
     font-size: 28px;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
   }
 
   header p {
-    font-size: 15px;
+    margin-top: 10px;
+    font-size: 16px;
     opacity: 0.9;
-    margin-top: 6px;
   }
 
-  /* ===== SOUS-BARRE ===== */
-  .subbar {
-    background: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 30px;
-    font-size: 14px;
-    color: #555;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .subbar .left { display: flex; align-items: center; gap: 8px; }
-  .subbar .dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: #2ecc71; display: inline-block;
-  }
-
-  .subbar .right { display: flex; gap: 15px; }
-  .subbar button {
-    background: none;
-    border: 1px solid #ddd;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-  .subbar button:hover { background: #f0f0f0; }
-
-  /* ===== GRILLE DE CARTES ===== */
-  .grid {
+  /* ===== MAIN ===== */
+  main {
+    flex: 1;
     max-width: 1100px;
-    margin: 40px auto;
+    margin: -30px auto 40px;
     padding: 0 20px;
+    width: 100%;
+  }
+
+  .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
@@ -91,159 +58,122 @@
 
   .card {
     background: #fff;
-    border-radius: 14px;
-    padding: 24px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.14);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.14);
   }
 
-  .icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: #fff;
+  .card .icon {
+    font-size: 36px;
+    margin-bottom: 14px;
   }
 
   .card h2 {
     font-size: 18px;
-    font-weight: 700;
-    color: #222;
+    margin-bottom: 10px;
+    color: #A0141E;
   }
 
   .card p {
     font-size: 14px;
-    color: #777;
-    flex-grow: 1;
-  }
-
-  .badge {
-    font-size: 13px;
-    font-weight: 600;
-    color: #444;
-    background: #f2f2f2;
-    padding: 4px 10px;
-    border-radius: 20px;
-    width: fit-content;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 18px;
   }
 
   .card a {
+    display: inline-block;
+    background: #A0141E;
+    color: #fff;
     text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 30px;
     font-size: 14px;
     font-weight: 600;
-    margin-top: 8px;
-    display: inline-block;
+    transition: background 0.2s ease;
   }
 
-  /* Couleurs par bloc */
-  .rh .icon { background: #C0392B; }
-  .rh .badge { color: #C0392B; background: #FDEDEC; }
-  .rh a { color: #C0392B; }
+  .card a:hover {
+    background: #8B0000;
+  }
 
-  .suivi .icon { background: #2980B9; }
-  .suivi .badge { color: #2980B9; background: #EAF2FA; }
-  .suivi a { color: #2980B9; }
-
-  .formation .icon { background: #E67E22; }
-  .formation .badge { color: #E67E22; background: #FDF2E9; }
-  .formation a { color: #E67E22; }
-
-  .materiel .icon { background: #D35400; }
-  .materiel .badge { color: #D35400; background: #FBEEE6; }
-  .materiel a { color: #D35400; }
-
-  .stats .icon { background: #16A085; }
-  .stats .badge { color: #16A085; background: #E8F8F5; }
-  .stats a { color: #16A085; }
-
-  .docs .icon { background: #6C3483; }
-  .docs .badge { color: #6C3483; background: #F4ECF7; }
-  .docs a { color: #6C3483; }
-
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    color: #888;
+    background: #fff;
+    border-top: 1px solid #eee;
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="emblem">🚒</div>
-  <h1>Portail EAP - SDIS37</h1>
-  <p>Outil de gestion de la filière Encadrement des Activités Physiques</p>
+  <div class="logo">🚒</div>
+  <h1>Portail EAP - SDIS 37</h1>
+  <p>Espace dédié aux Éducateurs des Activités Physiques</p>
 </header>
 
-<div class="subbar">
-  <div class="left">
-    <span class="dot"></span>
-    Connecté — <strong>Michael Delalande</strong>
-  </div>
-  <div class="right">
-    <button>👥 Comptes</button>
-    <button>⚙️ Setup</button>
-    <button>🚪 Déconnexion</button>
-  </div>
-</div>
+<main>
+  <div class="grid">
 
-<div class="grid">
+    <div class="card">
+      <div class="icon">👥</div>
+      <h2>RH</h2>
+      <p>Gestion et suivi des ressources humaines liées aux EAP.</p>
+      <a href="#">Accéder ➔</a>
+    </div>
 
-  <div class="card rh">
-    <div class="icon">👥</div>
-    <h2>Gestion RH</h2>
-    <p>Personnels EAP, qualifications et suivi individuel</p>
-    <span class="badge">-- agents</span>
-    <a href="#">Accéder →</a>
+    <div class="card">
+      <div class="icon">📈</div>
+      <h2>Suivi annuel</h2>
+      <p>Consultation et mise à jour du suivi annuel des agents.</p>
+      <a href="#">Accéder ➔</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎓</div>
+      <h2>Formation</h2>
+      <p>Accès aux ressources et plannings de formation.</p>
+      <a href="#">Accéder ➔</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🏋️</div>
+      <h2>Matériel</h2>
+      <p>Gestion et inventaire du matériel sportif.</p>
+      <a href="#">Accéder ➔</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">📊</div>
+      <h2>Statistiques</h2>
+      <p>Indicateurs et bilans des activités physiques.</p>
+      <a href="#">Accéder ➔</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">📁</div>
+      <h2>Documents</h2>
+      <p>Fiches, protocoles et documents utiles aux EAP.</p>
+      <a href="#">Accéder ➔</a>
+    </div>
+
   </div>
+</main>
 
-  <div class="card suivi">
-    <div class="icon">📈</div>
-    <h2>Suivi annuel</h2>
-    <p>Heures effectuées et objectifs de la filière</p>
-    <span class="badge">Tableau de bord</span>
-    <a href="#">Accéder →</a>
-  </div>
-
-  <div class="card formation">
-    <div class="icon">🎓</div>
-    <h2>Formation</h2>
-    <p>Sessions de formation et recyclages programmés</p>
-    <span class="badge">-- sessions</span>
-    <a href="#">Accéder →</a>
-  </div>
-
-  <div class="card materiel">
-    <div class="icon">🏋️</div>
-    <h2>Matériel</h2>
-    <p>Inventaire et suivi du matériel sportif</p>
-    <span class="badge">-- équipements</span>
-    <a href="#">Accéder →</a>
-  </div>
-
-  <div class="card stats">
-    <div class="icon">📊</div>
-    <h2>Statistiques</h2>
-    <p>Indicateurs et bilans de la filière EAP</p>
-    <span class="badge">Bilan complet</span>
-    <a href="#">Accéder →</a>
-  </div>
-
-  <div class="card docs">
-    <div class="icon">📄</div>
-    <h2>Documents</h2>
-    <p>Référentiels, modèles et fiches de suivi</p>
-    <span class="badge">-- fichiers</span>
-    <a href="#">Accéder →</a>
-  </div>
-
-</div>
+<footer>
+  © 2026 Portail EAP - SDIS 37. Tous droits réservés.
+</footer>
 
 </body>
 </html>
