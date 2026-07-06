@@ -1,383 +1,141 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>RH - Portail EAP SDIS37</title>
-
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/rh.css">
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RH - Portail EAP</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <header class="hero">
+    <div class="container">
+      <h1>Ressources humaines - Filière EAP</h1>
+      <p>Gestion des personnels EAP du SDIS37</p>
+    </div>
+  </header>
 
-<header class="topbar">
+  <main class="container">
+    <nav class="top-nav">
+      <a href="index.html" class="btn">← Retour à l'accueil</a>
+    </nav>
 
-    <div class="logo">
+    <section class="stats-grid">
+      <div class="stat-box">
+        <span class="stat-label">Total EAP</span>
+        <strong class="stat-value" id="stat-total">0</strong>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">EAP 1</span>
+        <strong class="stat-value" id="stat-eap1">0</strong>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">EAP 2</span>
+        <strong class="stat-value" id="stat-eap2">0</strong>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">EAP 3</span>
+        <strong class="stat-value" id="stat-eap3">0</strong>
+      </div>
+    </section>
 
-        <i class="fa-solid fa-fire"></i>
-
-        <div>
-
-            <h2>PORTAIL EAP</h2>
-
-            <small>Gestion RH</small>
-
+    <section class="panel">
+      <div class="toolbar">
+        <button class="btn btn-add" onclick="ouvrirFormulaire()">+ Ajouter un EAP</button>
+        <input type="text" class="search-box" id="recherche" placeholder="Rechercher un nom..." onkeyup="filtrerTableau()" />
+        <div class="filters">
+          <select class="filter-select" id="filtre-niveau" onchange="filtrerTableau()">
+            <option value="">Tous les niveaux</option>
+            <option value="EAP 1">EAP 1</option>
+            <option value="EAP 2">EAP 2</option>
+            <option value="EAP 3">EAP 3</option>
+          </select>
+          <select class="filter-select" id="filtre-groupement" onchange="filtrerTableau()">
+            <option value="">Tous les groupements</option>
+          </select>
+          <select class="filter-select" id="filtre-cis" onchange="filtrerTableau()">
+            <option value="">Tous les CIS</option>
+          </select>
         </div>
+      </div>
 
+      <h2>Liste des personnels EAP</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Grade</th>
+            <th>Niveau EAP</th>
+            <th>Groupement</th>
+            <th>CIS</th>
+            <th>Heures</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tableau-eap">
+          <!-- Les lignes seront générées par JavaScript -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Fenêtre modale pour ajouter/modifier -->
+  <div id="modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2 id="modal-titre">Ajouter un EAP</h2>
+      <form id="formulaire-eap">
+        <input type="hidden" id="eap-id" />
+        
+        <label>Nom *</label>
+        <input type="text" id="eap-nom" required />
+        
+        <label>Prénom *</label>
+        <input type="text" id="eap-prenom" required />
+        
+        <label>Grade</label>
+        <input type="text" id="eap-grade" />
+        
+        <label>Niveau EAP *</label>
+        <select id="eap-niveau" required>
+          <option value="">-- Choisir --</option>
+          <option value="EAP 1">EAP 1</option>
+          <option value="EAP 2">EAP 2</option>
+          <option value="EAP 3">EAP 3</option>
+        </select>
+        
+        <label>Groupement</label>
+        <input type="text" id="eap-groupement" />
+        
+        <label>CIS</label>
+        <input type="text" id="eap-cis" />
+        
+        <label>Heures</label>
+        <input type="number" id="eap-heures" step="0.5" value="0" />
+        
+        <label>Dernière FMPA</label>
+        <input type="date" id="eap-derniere-fmpa" />
+        
+        <label>Prochaine FMPA</label>
+        <input type="date" id="eap-prochaine-fmpa" />
+        
+        <label>Actif</label>
+        <select id="eap-actif">
+          <option value="1">Oui</option>
+          <option value="0">Non</option>
+        </select>
+        
+        <label>Observations</label>
+        <textarea id="eap-observations" rows="3"></textarea>
+        
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-add">Enregistrer</button>
+          <button type="button" class="btn" onclick="fermerFormulaire()">Annuler</button>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <div class="top-actions">
-
-        <input type="text" placeholder="Rechercher un agent...">
-
-        <a href="../index.html" class="btn-retour">
-
-            <i class="fa-solid fa-house"></i>
-
-            Accueil
-
-        </a>
-
-    </div>
-
-</header>
-
-<main class="rh-container">
-
-<h1>
-
-<i class="fa-solid fa-users"></i>
-
-Gestion des Ressources Humaines
-
-</h1>
-
-<!-- ====================================================== -->
-<!-- TABLEAU DE BORD -->
-<!-- ====================================================== -->
-
-<section class="dashboard-rh">
-
-    <div class="card-stat">
-
-        <i class="fa-solid fa-user-group"></i>
-
-        <h2>84</h2>
-
-        <p>Agents EAP</p>
-
-    </div>
-
-    <div class="card-stat">
-
-        <i class="fa-solid fa-building"></i>
-
-        <h2>67</h2>
-
-        <p>CIS</p>
-
-    </div>
-
-    <div class="card-stat">
-
-        <i class="fa-solid fa-dumbbell"></i>
-
-        <h2>1320</h2>
-
-        <p>Heures APS</p>
-
-    </div>
-
-    <div class="card-stat warning">
-
-        <i class="fa-solid fa-triangle-exclamation"></i>
-
-        <h2>17</h2>
-
-        <p>FMPA à prévoir</p>
-
-    </div>
-
-</section>
-
-<!-- ====================================================== -->
-<!-- BARRE D'OUTILS -->
-<!-- ====================================================== -->
-
-<section class="toolbar">
-
-<input type="text" placeholder="🔎 Rechercher un agent">
-
-<select>
-
-<option>Tous les grades</option>
-
-</select>
-
-<select>
-
-<option>Tous les CIS</option>
-
-</select>
-
-<select>
-
-<option>Tous les GPT</option>
-
-</select>
-
-<select>
-
-<option>Tous les niveaux</option>
-
-</select>
-
-<button class="btn bleu">
-
-<i class="fa-solid fa-file-import"></i>
-
-Importer Excel
-
-</button>
-
-<button class="btn vert">
-
-<i class="fa-solid fa-user-plus"></i>
-
-Nouvel agent
-
-</button>
-
-</section>
-
-<!-- ====================================================== -->
-<!-- TABLEAU -->
-<!-- ====================================================== -->
-
-<div class="tableau">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Nom</th>
-
-<th>Prénom</th>
-
-<th>Grade</th>
-
-<th>CIS</th>
-
-<th>GPT</th>
-
-<th>Niveau</th>
-
-<th>APS</th>
-
-<th>FMPA</th>
-
-<th>Actions</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td>DELALANDE</td>
-
-<td>Michaël</td>
-
-<td>Lieutenant</td>
-
-<td>CEFOR</td>
-
-<td>CTA</td>
-
-<td>
-
-<span class="badge bleu">
-
-EAP3
-
-</span>
-
-</td>
-
-<td>142 h</td>
-
-<td>
-
-<span class="ok">
-
-✔
-
-</span>
-
-</td>
-
-<td>
-
-<button class="action voir">
-
-<i class="fa-solid fa-eye"></i>
-
-</button>
-
-<button class="action modifier">
-
-<i class="fa-solid fa-pen"></i>
-
-</button>
-
-<button class="action supprimer">
-
-<i class="fa-solid fa-trash"></i>
-
-</button>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>DUPONT</td>
-
-<td>Jean</td>
-
-<td>Adjudant</td>
-
-<td>Loches</td>
-
-<td>Sud</td>
-
-<td>
-
-<span class="badge orange">
-
-EAP2
-
-</span>
-
-</td>
-
-<td>96 h</td>
-
-<td>
-
-<span class="warning">
-
-À prévoir
-
-</span>
-
-</td>
-
-<td>
-
-<button class="action voir">
-
-<i class="fa-solid fa-eye"></i>
-
-</button>
-
-<button class="action modifier">
-
-<i class="fa-solid fa-pen"></i>
-
-</button>
-
-<button class="action supprimer">
-
-<i class="fa-solid fa-trash"></i>
-
-</button>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td>MARTIN</td>
-
-<td>Pierre</td>
-
-<td>Caporal-Chef</td>
-
-<td>Tours</td>
-
-<td>Nord</td>
-
-<td>
-
-<span class="badge vert">
-
-EAP1
-
-</span>
-
-</td>
-
-<td>84 h</td>
-
-<td>
-
-<span class="ok">
-
-✔
-
-</span>
-
-</td>
-
-<td>
-
-<button class="action voir">
-
-<i class="fa-solid fa-eye"></i>
-
-</button>
-
-<button class="action modifier">
-
-<i class="fa-solid fa-pen"></i>
-
-</button>
-
-<button class="action supprimer">
-
-<i class="fa-solid fa-trash"></i>
-
-</button>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</main>
-
-<script src="../js/rh.js"></script>
-
+  <script src="app.js"></script>
 </body>
-
 </html>
